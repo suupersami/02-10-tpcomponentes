@@ -1,0 +1,9 @@
+<div class="card mb-3">
+  <img [src]="pokemon.imagen">
+  <div class="card-body">
+    <h4 class="card title">{{pokemon.id}}{{pokemon.nombre}}</h4>
+    @for (tipo of pokemon.tipos; track tipo) {}
+    <p class="card-text mb-2">Altura: {{pokemon.altura}} Peso: {{pokemon.peso}}</p>
+    <button class="btn" style="background-color:#ff83d8;border-color:#ff83e2;color: white;" (click)="onFavoritoToggled()">🌟 favorito</button>
+  </div>
+</div>

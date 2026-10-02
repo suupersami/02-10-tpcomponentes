@@ -1,0 +1,32 @@
+<div class="conteiner mt-4">
+    <h2>Catalogo Pokemon</h2>
+    <input type="text" class="form-control mb-3" placeholder="Buscar Pokemon" [(ngModel)]="busqueda">
+    <p class="text-muted">Se encontraron {{pokemonsFiltrados.length}} pokemons</p>
+    <div class="row">
+       @for (p of pokemonsFiltrados; track p.id) {
+        <div class="col-6 col-md-4 col-lg-3 mb-3">
+            <app-producto-card
+                [pokemon]="p"
+                (favoritoToggled)="onFavoritoToggled($event)"
+            ></app-producto-card>
+        </div>    
+       }@empty {
+        <p class="text-muted">No se encontraron pokemon con "{{busqueda}}"</p>
+       }
+    </div>
+    @if (favoritos.length >0 ){
+        <hr>
+        <h2>Favoritos ({{favoritos.length}})</h2>
+        <div class="row">
+            @for (f of favoritos; track f.id) {
+                <div class="col-6 col-md-4 col-lg-3 mb-3">
+                    <app-producto-card
+                        [pokemon]="f"
+                        (favoritoToggled)="onFavoritoToggled($event)"
+                    ></app-producto-card>
+                </div>    
+            }
+        </div> 
+    }        
+    
+</div>
