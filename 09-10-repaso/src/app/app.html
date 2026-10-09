@@ -1,0 +1,18 @@
+<nav class="navbar navbar-dark bg-dark">
+<div class="container">
+<div class="navbar-nav flex-row gap-3">
+<!-- routerLink + routerLinkActive juntos -->
+<a routerLink="/"
+routerLinkActive="active"
+[routerLinkActiveOptions]="{ exact: true }"
+class="nav-link">Inicio</a>
+<a routerLink="/acercaDe"
+routerLinkActive="active"
+class="nav-link">Acerca de</a>
+<a routerLink="/contacto"
+routerLinkActive="active"
+class="nav-link">Contacto</a>
+</div>
+</div>
+</nav>
+<router-outlet />
