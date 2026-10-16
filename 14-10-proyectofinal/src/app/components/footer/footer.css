@@ -1,0 +1,403 @@
+/* =========================
+   FOOTER
+========================= */
+
+.footer {
+  width: 100%;
+  background: #000;
+  color: #fff;
+  padding: 55px 40px 25px 40px;
+  box-sizing: border-box;
+}
+
+
+/* =========================
+   PARTE SUPERIOR
+========================= */
+
+.footer-top {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns:
+    2.5fr
+    1fr
+    1fr
+    1fr
+    1.2fr;
+
+  gap: 45px;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================
+   MARCA
+========================= */
+
+.footer-brand {
+  max-width: 390px;
+}
+
+
+/* LOGO */
+
+.footer-logo {
+  width: 75px;
+  height: 75px;
+
+  object-fit: contain;
+
+  display: block;
+
+  margin-bottom: 35px;
+}
+
+
+/* TÍTULO */
+
+.footer-brand h2 {
+  margin: 0 0 25px 0;
+
+  font-size: 23px;
+
+  line-height: 1.15;
+
+  font-weight: 700;
+
+  color: white;
+}
+
+
+/* DESCRIPCIÓN */
+
+.footer-brand p {
+  margin: 0 0 22px 0;
+
+  color: #aaa;
+
+  font-size: 15px;
+
+  line-height: 1.6;
+}
+
+
+/* LINK */
+
+.footer-link {
+  display: block;
+
+  margin-bottom: 22px;
+
+  color: white;
+
+  text-decoration: none;
+
+  font-size: 15px;
+
+  transition: color 0.3s ease;
+}
+
+.footer-link:hover {
+  color: #007bff;
+}
+
+
+/* BOTÓN CONTACTO */
+
+.footer-join {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  color: white;
+
+  font-size: 16px;
+
+  font-weight: 700;
+
+  text-decoration: none;
+}
+
+.footer-join span {
+  width: 20px;
+  height: 20px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #007bff;
+
+  color: white;
+
+  font-size: 14px;
+
+  transition: transform 0.3s ease;
+}
+
+.footer-join:hover {
+  color: #007bff;
+}
+
+.footer-join:hover span {
+  transform: translateX(4px);
+}
+
+
+/* =========================
+   COLUMNAS
+========================= */
+
+.footer-column {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 15px;
+}
+
+
+/* TÍTULOS */
+
+.footer-column h3,
+.footer-social h3 {
+  margin: 0 0 10px 0;
+
+  color: white;
+
+  font-size: 16px;
+
+  font-weight: 700;
+}
+
+
+/* LINKS */
+
+.footer-column a {
+  color: #ddd;
+
+  font-size: 15px;
+
+  text-decoration: none;
+
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.footer-column a:hover {
+  color: #007bff;
+
+  transform: translateX(3px);
+}
+
+
+/* =========================
+   REDES
+========================= */
+
+.footer-social {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-start;
+}
+
+
+/* ICONOS */
+
+.social-icons {
+  display: flex;
+
+  gap: 10px;
+
+  margin: 5px 0 20px 0;
+}
+
+.social-icons a {
+  width: 34px;
+  height: 34px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #292929;
+
+  color: white;
+
+  text-decoration: none;
+
+  font-size: 16px;
+
+  font-weight: 700;
+
+  transition:
+    background 0.3s ease,
+    transform 0.3s ease;
+}
+
+.social-icons a:hover {
+  background: #007bff;
+
+  transform: translateY(-3px);
+}
+
+
+/* TEXTO REDES */
+
+.footer-social p {
+  margin: 0 0 14px 0;
+
+  color: #aaa;
+
+  font-size: 14px;
+}
+
+
+/* =========================
+   LÍNEA
+========================= */
+
+.footer-line {
+  width: 100%;
+
+  height: 1px;
+
+  background: #333;
+
+  margin: 40px 0 30px 0;
+}
+
+
+/* =========================
+   PARTE INFERIOR
+========================= */
+
+.footer-bottom {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 30px;
+}
+
+
+/* LINKS INFERIORES */
+
+.footer-bottom-links {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 35px;
+}
+
+.footer-bottom-links a {
+  color: #aaa;
+
+  text-decoration: none;
+
+  font-size: 14px;
+
+  transition: color 0.3s ease;
+}
+
+.footer-bottom-links a:hover {
+  color: #007bff;
+}
+
+
+/* INFORMACIÓN */
+
+.footer-info {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 45px;
+}
+
+.footer-info span {
+  color: #888;
+
+  font-size: 13px;
+}
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 1100px) {
+
+  .footer-top {
+    grid-template-columns:
+      2fr
+      1fr
+      1fr;
+
+    row-gap: 45px;
+  }
+
+  .footer-brand {
+    max-width: 450px;
+  }
+
+}
+
+
+/* =========================
+   CELULAR
+========================= */
+
+@media (max-width: 700px) {
+
+  .footer {
+    padding: 45px 25px 25px 25px;
+  }
+
+  .footer-top {
+    grid-template-columns: 1fr;
+
+    gap: 35px;
+  }
+
+  .footer-brand {
+    max-width: 100%;
+  }
+
+  .footer-logo {
+    width: 65px;
+    height: 65px;
+  }
+
+  .footer-brand h2 {
+    font-size: 22px;
+  }
+
+  .footer-bottom-links {
+    flex-direction: column;
+
+    gap: 15px;
+  }
+
+  .footer-info {
+    flex-direction: column;
+
+    gap: 12px;
+  }
+
+}
