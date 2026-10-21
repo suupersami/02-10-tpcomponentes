@@ -1,42 +1,22 @@
+
 <section class="curiosidades">
 
-  <!-- TÍTULO -->
   <div class="titulo-curiosidades">
     <h1>Curiosidades</h1>
   </div>
 
-  <!-- CARDS -->
   <div class="productos-container">
 
     @for (producto of productos; track producto.titulo) {
 
-      <article class="card">
-
-        <img
-          class="card-image"
-          [src]="producto.imagen"
-          [alt]="producto.titulo"
-        >
-
-        <div class="card-overlay"></div>
-
-        <div class="card-content">
-
-          <h2>
-            {{ producto.titulo }}
-          </h2>
-
-          <button
-            class="card-button"
-            type="button"
-            aria-label="Ver más"
-          >
-            →
-          </button>
-
-        </div>
-
-      </article>
+      <app-producto-card
+        [titulo]="producto.titulo"
+        [imagen]="producto.imagen"
+        [descripcion]="producto.descripcion"
+        [likes]="producto.likes"
+        [dislikes]="producto.dislikes"
+        (voto)="registrarVoto(producto, $event)"
+      />
 
     }
 

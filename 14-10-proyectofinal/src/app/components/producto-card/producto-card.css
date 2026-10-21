@@ -1,0 +1,230 @@
+
+:host {
+  display: block;
+  min-width: 0;
+  width: 100%;
+}
+
+/* TARJETA */
+.card {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  height: auto;
+  overflow: hidden;
+  background: #000;
+  border-radius: 0;
+  opacity: 0;
+  animation: subirCard 1s ease-out forwards;
+}
+
+@keyframes subirCard {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* IMAGEN */
+.card-visual {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 5;
+  overflow: hidden;
+  background: #111;
+  cursor: pointer;
+}
+
+.card-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.6s ease, filter 0.6s ease;
+}
+
+.card-visual:hover .card-image {
+  transform: scale(1.07);
+  filter: brightness(1.08);
+}
+
+/* CAPA OSCURA */
+.card-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.85) 0%,
+    rgba(0, 0, 0, 0.35) 45%,
+    rgba(0, 0, 0, 0.05) 75%
+  );
+  pointer-events: none;
+}
+
+/* TÍTULO Y FLECHA */
+.card-content {
+  position: absolute;
+  left: 24px;
+  right: 24px;
+  bottom: 28px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  pointer-events: none;
+}
+
+.card-content h2 {
+  margin: 0;
+  color: #fff;
+  font-size: 29px;
+  line-height: 0.95;
+  font-weight: 700;
+  letter-spacing: -1px;
+}
+
+.card-button {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: #0a0279;
+  color: #fff;
+  font-size: 19px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  pointer-events: auto;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.card-button:hover {
+  transform: translateX(5px);
+  background: #487fff;
+}
+
+/* DESCRIPCIÓN */
+.descripcion-card {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 25px;
+  box-sizing: border-box;
+  overflow-y: auto;
+  background: rgba(0, 0, 0, 0.94);
+  color: #fff;
+  animation: aparecerDescripcion 0.3s ease;
+  cursor: auto;
+}
+
+.descripcion-card p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.6;
+  text-align: left;
+}
+
+@keyframes aparecerDescripcion {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* BOTONES LIKE Y DISLIKE */
+.likes-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 10px 0;
+  background: #000;
+}
+
+.like-button,
+.dislike-button {
+  flex: 1;
+  min-width: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 10px 8px;
+  border: 1px solid #444;
+  border-radius: 20px;
+  background: #171717;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.like-button:hover {
+  background: #173c25;
+  border-color: #39b765;
+  transform: translateY(-2px);
+}
+
+.dislike-button:hover {
+  background: #431c1c;
+  border-color: #e05260;
+  transform: translateY(-2px);
+}
+
+.like-button span,
+.dislike-button span {
+  font-variant-numeric: tabular-nums;
+}
+
+/* TABLET */
+@media (max-width: 1000px) {
+  .card-content {
+    left: 16px;
+    right: 16px;
+    bottom: 20px;
+  }
+
+  .card-content h2 {
+    font-size: 25px;
+  }
+}
+
+/* CELULAR */
+@media (max-width: 600px) {
+  .card-content h2 {
+    font-size: 27px;
+  }
+
+  .likes-container {
+    gap: 8px;
+    padding: 8px 0;
+  }
+
+  .like-button,
+  .dislike-button {
+    padding: 9px 5px;
+    font-size: 13px;
+  }
+}

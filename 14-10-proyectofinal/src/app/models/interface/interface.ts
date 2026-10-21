@@ -1,9 +1,8 @@
-import { Component } from '@angular/core';
 
-@Component({
-  imports: [],
-  selector: 'app-interface',
-  styleUrl: './interface.css',
-  templateUrl: './interface.html',
-})
-export class Interface {}
+export interface Producto {
+  titulo: string;
+  imagen: string;
+  descripcion: string;
+  likes: number;
+  dislikes: number;
+}

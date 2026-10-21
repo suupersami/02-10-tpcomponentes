@@ -1,3 +1,4 @@
+
 :host {
   display: block;
 }
@@ -9,7 +10,7 @@
 .curiosidades {
   width: 100%;
   padding: 10px 12px 40px 12px;
-  background: white;
+  background: rgb(0, 0, 0);
   box-sizing: border-box;
 }
 
@@ -21,26 +22,21 @@
   width: 100%;
   margin: 0 0 15px 0;
   padding: 0;
-
   animation: subirTitulo 1.2s ease-out forwards;
 }
 
 .titulo-curiosidades h1 {
+  color: white;
   margin: 0;
-
   font-size: clamp(55px, 7vw, 90px);
   line-height: 1;
-
   font-weight: 800;
   letter-spacing: -4px;
-
-  color: #000;
-
   text-align: left;
 }
 
 /* =========================
-   ANIMACIÓN TÍTULO
+   ANIMACIONES
 ========================= */
 
 @keyframes subirTitulo {
@@ -55,19 +51,37 @@
   }
 }
 
+@keyframes subirCard {
+  from {
+    opacity: 0;
+    transform: translateY(80px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes aparecerDescripcion {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
 /* =========================
    CONTENEDOR DE CARDS
 ========================= */
 
 .productos-container {
   width: 100%;
-
   display: grid;
-
-  grid-template-columns: repeat(4, 1fr);
-
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 16px;
-
   margin-top: 0;
 }
 
@@ -77,22 +91,14 @@
 
 .card {
   position: relative;
-
-  height: 520px;
-
+  min-width: 0;
+  height: auto;
   overflow: hidden;
-
-  background: #111;
-
-  cursor: pointer;
-
-  /* Animación */
+  background: #000;
+  border-radius: 0;
   opacity: 0;
-
   animation: subirCard 1s ease-out forwards;
 }
-
-/* Cada card aparece un poquito después */
 
 .card:nth-child(1) {
   animation-delay: 0.2s;
@@ -111,40 +117,27 @@
 }
 
 /* =========================
-   ANIMACIÓN DE LAS CARDS
+   ÁREA VISUAL E IMAGEN
 ========================= */
 
-@keyframes subirCard {
-  from {
-    opacity: 0;
-    transform: translateY(80px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.card-visual {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 5;
+  overflow: hidden;
+  background: #111;
+  cursor: pointer;
 }
-
-/* =========================
-   IMAGEN
-========================= */
 
 .card-image {
   position: absolute;
-
   inset: 0;
-
   width: 100%;
   height: 100%;
-
   object-fit: cover;
-
   object-position: center;
-
-  transition:
-    transform 0.6s ease,
-    filter 0.6s ease;
+  border-radius: 0;
+  transition: transform 0.6s ease, filter 0.6s ease;
 }
 
 /* =========================
@@ -153,109 +146,170 @@
 
 .card-overlay {
   position: absolute;
-
   inset: 0;
-
-  background:
-    linear-gradient(
-      to top,
-      rgba(0, 0, 0, 0.85) 0%,
-      rgba(0, 0, 0, 0.35) 45%,
-      rgba(0, 0, 0, 0.05) 75%
-    );
-
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.85) 0%,
+    rgba(0, 0, 0, 0.35) 45%,
+    rgba(0, 0, 0, 0.05) 75%
+  );
   z-index: 1;
+  pointer-events: none;
 }
 
 /* =========================
-   CONTENIDO
+   CONTENIDO DE LA CARD
 ========================= */
 
 .card-content {
   position: absolute;
-
   left: 24px;
   right: 24px;
   bottom: 28px;
-
   z-index: 2;
-
   display: flex;
-
   align-items: center;
-
   justify-content: space-between;
-
   gap: 10px;
+  pointer-events: none;
 }
-
-/* =========================
-   TÍTULO DE LA CARD
-========================= */
 
 .card-content h2 {
   margin: 0;
-
   color: white;
-
   font-size: 29px;
-
   line-height: 0.95;
-
   font-weight: 700;
-
   letter-spacing: -1px;
 }
 
+.card-content .card-button {
+  pointer-events: auto;
+}
+
 /* =========================
-   BOTÓN
+   BOTÓN DESCRIPCIÓN
 ========================= */
 
 .card-button {
   flex-shrink: 0;
-
   width: 28px;
   height: 28px;
-
+  padding: 0;
   border: none;
-
   border-radius: 50%;
-
-  background: #ff3b30;
-
+  background: #0a0279;
   color: white;
-
   font-size: 19px;
-
   line-height: 28px;
-
   display: flex;
-
   align-items: center;
-
   justify-content: center;
-
   cursor: pointer;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
 
-  transition:
-    transform 0.3s ease,
-    background 0.3s ease;
+.card-button:hover {
+  transform: translateX(5px);
+  background: #487fff;
 }
 
 /* =========================
-   HOVER
+   DESCRIPCIÓN CON @if
 ========================= */
 
-.card:hover .card-image {
-  transform: scale(1.07);
+.descripcion-card {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 25px;
+  box-sizing: border-box;
+  background: rgba(0, 0, 0, 0.92);
+  color: white;
+  overflow-y: auto;
+  animation: aparecerDescripcion 0.3s ease;
+  cursor: auto;
+}
 
+.descripcion-card p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.6;
+  text-align: left;
+}
+
+/* =========================
+   HOVER DE IMAGEN
+========================= */
+
+.card-visual:hover .card-image {
+  transform: scale(1.07);
   filter: brightness(1.08);
 }
 
-.card:hover .card-button {
-  transform: translateX(5px);
+/* =========================
+   LIKE Y DISLIKE
+========================= */
 
-  background: #ff5148;
+.likes-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 10px 4px;
+  background: #000;
+}
+
+.like-button,
+.dislike-button {
+  flex: 1;
+  min-width: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 8px;
+  border: 1px solid #444;
+  border-radius: 20px;
+  background: #171717;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.like-button:hover {
+  background: #173c25;
+  transform: translateY(-2px);
+}
+
+.dislike-button:hover {
+  background: #431c1c;
+  transform: translateY(-2px);
+}
+
+.like-button.liked {
+  background: #164b2b;
+  border-color: #39b765;
+  color: #a8f0bd;
+}
+
+.dislike-button.disliked {
+  background: #541e24;
+  border-color: #e05260;
+  color: #ffb4bb;
+}
+
+.like-button span,
+.dislike-button span {
+  font-variant-numeric: tabular-nums;
 }
 
 /* =========================
@@ -263,15 +317,9 @@
 ========================= */
 
 @media (max-width: 1000px) {
-
   .productos-container {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-
-  .card {
-    height: 450px;
-  }
-
 }
 
 /* =========================
@@ -279,7 +327,6 @@
 ========================= */
 
 @media (max-width: 600px) {
-
   .curiosidades {
     padding: 10px 10px 30px 10px;
   }
@@ -294,12 +341,18 @@
     gap: 12px;
   }
 
-  .card {
-    height: 450px;
-  }
-
   .card-content h2 {
     font-size: 27px;
   }
 
+  .likes-container {
+    gap: 8px;
+    padding: 8px 2px;
+  }
+
+  .like-button,
+  .dislike-button {
+    padding: 9px 5px;
+    font-size: 13px;
+  }
 }

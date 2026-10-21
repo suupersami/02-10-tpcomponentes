@@ -1,1 +1,57 @@
-<p>producto-card works!</p>
+
+<article class="card">
+
+  <div class="card-visual">
+
+    <img
+      class="card-image"
+      [src]="imagen"
+      [alt]="titulo"
+    >
+
+    <div class="card-overlay"></div>
+
+    <div class="card-content">
+      <h2>{{ titulo }}</h2>
+
+      <button
+        class="card-button"
+        type="button"
+        (click)="verDescripcion()"
+        [attr.aria-expanded]="cardAbierta"
+        [attr.aria-label]="cardAbierta ? 'Cerrar descripción' : 'Ver descripción'"
+      >
+        {{ cardAbierta ? '×' : '→' }}
+      </button>
+    </div>
+
+    @if (cardAbierta) {
+      <div class="descripcion-card">
+        <p>{{ descripcion || 'Descripción próximamente.' }}</p>
+      </div>
+    }
+
+  </div>
+
+  <div class="likes-container">
+
+    <button
+      class="like-button"
+      type="button"
+      (click)="darMeGusta()"
+    >
+      👍 Like <span>{{ likes }}</span>
+    </button>
+
+    <button
+      class="dislike-button"
+      type="button"
+      (click)="darNoMeGusta()"
+    >
+      👎 Dislike <span>{{ dislikes }}</span>
+    </button>
+
+  </div>
+
+</article>
+
