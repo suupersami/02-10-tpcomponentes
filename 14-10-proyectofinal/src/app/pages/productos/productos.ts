@@ -1,22 +1,28 @@
 
 import { Component } from '@angular/core';
+import { ProductoCard } from '../../components/producto-card/producto-card';
+import { Producto } from '../../models/interface/interface';
 
-interface Producto {
-  titulo: string;
-  imagen: string;
-  descripcion: string;
-  likes: number;
-  dislikes: number;
-}
+
 
 @Component({
   selector: 'app-productos',
   standalone: true,
-  imports: [],
+  imports: [ProductoCard],
   templateUrl: './productos.html',
   styleUrl: './productos.css',
 })
 export class Productos {
+  registrarVoto(
+  producto: Producto,
+  tipo: 'like' | 'dislike'
+): void {
+  if (tipo === 'like') {
+    producto.likes++;
+  } else {
+    producto.dislikes++;
+  }
+}
 
   cardAbierta: string | null = null;
 

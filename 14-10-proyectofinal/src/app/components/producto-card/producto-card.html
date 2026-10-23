@@ -5,14 +5,14 @@
 
     <img
       class="card-image"
-      [src]="imagen"
-      [alt]="titulo"
+      [src]="productos.imagen"
+      [alt]="productos.titulo"
     >
 
     <div class="card-overlay"></div>
 
     <div class="card-content">
-      <h2>{{ titulo }}</h2>
+      <h2>{{productos.titulo }}</h2>
 
       <button
         class="card-button"
@@ -27,7 +27,7 @@
 
     @if (cardAbierta) {
       <div class="descripcion-card">
-        <p>{{ descripcion || 'Descripción próximamente.' }}</p>
+        <p>{{productos.descripcion || 'Descripción próximamente.' }}</p>
       </div>
     }
 
@@ -40,7 +40,7 @@
       type="button"
       (click)="darMeGusta()"
     >
-      👍 Like <span>{{ likes }}</span>
+      👍 Like <span>{{ productos.likes }}</span>
     </button>
 
     <button
@@ -48,7 +48,7 @@
       type="button"
       (click)="darNoMeGusta()"
     >
-      👎 Dislike <span>{{ dislikes }}</span>
+      👎 Dislike <span>{{productos.dislikes }}</span>
     </button>
 
   </div>

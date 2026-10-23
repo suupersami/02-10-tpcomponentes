@@ -1,5 +1,6 @@
 
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Producto } from '../../models/interface/interface';
 
 @Component({
   selector: 'app-producto-card',
@@ -9,18 +10,15 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   styleUrl: './producto-card.css',
 })
 export class ProductoCard {
-  @Input() titulo = '';
-  @Input() imagen = '';
-  @Input() descripcion = '';
-  @Input() likes = 0;
-  @Input() dislikes = 0;
+  @Input () productos!:Producto
+
+  @Input() cardAbierta = false;
 
   @Output() voto = new EventEmitter<'like' | 'dislike'>();
-
-  cardAbierta = false;
+  @Output() cambiarDescripcion = new EventEmitter<void>();
 
   verDescripcion(): void {
-    this.cardAbierta = !this.cardAbierta;
+    this.cambiarDescripcion.emit();
   }
 
   darMeGusta(): void {

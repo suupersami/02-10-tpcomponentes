@@ -1,4 +1,3 @@
-
 <section class="curiosidades">
 
   <div class="titulo-curiosidades">
@@ -8,16 +7,17 @@
   <div class="productos-container">
 
     @for (producto of productos; track producto.titulo) {
-
       <app-producto-card
-        [titulo]="producto.titulo"
+        [productos]="producto"
+        /* [titulo]="producto.titulo"
         [imagen]="producto.imagen"
         [descripcion]="producto.descripcion"
         [likes]="producto.likes"
-        [dislikes]="producto.dislikes"
-        (voto)="registrarVoto(producto, $event)"
-      />
-
+        [dislikes]="producto.dislikes" */
+        [cardAbierta]="cardAbierta === producto.titulo"
+        (cambiarDescripcion)="verDescripcion(producto.titulo)"
+        (voto)="registrarVoto(producto, $event)">
+      </app-producto-card>
     }
 
   </div>
