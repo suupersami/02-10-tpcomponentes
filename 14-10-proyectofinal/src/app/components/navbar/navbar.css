@@ -1,5 +1,6 @@
+
 /* =========================
-   NAVBAR
+   NAVBAR ESPACIAL
 ========================= */
 
 .navbar {
@@ -7,8 +8,18 @@
   display: flex;
   align-items: center;
   width: 100%;
+  min-height: 85px;
   padding: 10px 30px;
   box-sizing: border-box;
+
+  background-color: #05070d !important;
+  background-image:
+    radial-gradient(circle at 75% 30%, rgba(91, 40, 170, 0.20), transparent 28%),
+    radial-gradient(circle at 45% 70%, rgba(20, 80, 160, 0.14), transparent 30%);
+
+  border-bottom: 1px solid rgba(70, 120, 255, 0.35);
+  box-shadow: 0 4px 18px rgba(40, 80, 200, 0.15);
+  z-index: 1000;
 }
 
 
@@ -23,7 +34,7 @@
 .navbar-nav {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 12px;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -31,21 +42,74 @@
 
 
 /* =========================
-   LINKS
+   ENLACES
 ========================= */
 
-.nav-link {
-  color: #000 !important;
+.navbar .nav-link {
+  position: relative;
+  padding: 12px 14px !important;
+
+  color: #f5f5fa !important;
   font-size: 16px;
   font-weight: 500;
+  letter-spacing: 0.3px;
   text-decoration: none;
-  transition: color 0.3s ease;
+
+  transition:
+    color 0.3s ease,
+    text-shadow 0.3s ease;
 }
 
-/* AL PASAR EL MOUSE → AZUL */
 
-.nav-link:hover {
-  color: #0a0ab7 !important;
+/* SUBRAYADO */
+
+.navbar .nav-link::after {
+  content: "";
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 3px;
+
+  height: 2px;
+  background: #007bff;
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.8);
+
+  transform: scaleX(0);
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease;
+}
+
+
+/* =========================
+   EFECTO AL PASAR EL CURSOR
+========================= */
+
+.navbar .nav-link:hover {
+  color: #007bff !important;
+  text-shadow: 0 0 12px rgba(0, 123, 255, 0.6);
+}
+
+.navbar .nav-link:hover::after {
+  background: #007bff;
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.8);
+  transform: scaleX(1);
+}
+
+
+/* =========================
+   ENLACE ACTIVO
+========================= */
+
+.navbar .nav-link.activo {
+  color: #007bff !important;
+  text-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+}
+
+.navbar .nav-link.activo::after {
+  background: #007bff;
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.8);
+  transform: scaleX(1);
 }
 
 
@@ -55,10 +119,8 @@
 
 .logo-cet30 {
   position: absolute;
-
   left: 50%;
   top: 50%;
-
   transform: translate(-50%, -50%);
 
   display: flex;
@@ -66,14 +128,23 @@
   justify-content: center;
 }
 
-
-/* IMAGEN DEL LOGO */
-
 .logo-cet30 img {
   width: 70px;
   height: 70px;
   object-fit: contain;
   display: block;
+
+  transition:
+    transform 0.3s ease,
+    filter 0.3s ease;
+}
+
+
+/* BRILLO DEL LOGO */
+
+.logo-cet30 img:hover {
+  transform: scale(1.08);
+  filter: drop-shadow(0 0 8px rgba(0, 123, 255, 0.7));
 }
 
 
@@ -81,27 +152,37 @@
    BOTÓN HAMBURGUESA
 ========================= */
 
-.navbar-toggler {
-  border: none;
+.navbar .navbar-toggler {
+  border: 1px solid rgba(0, 123, 255, 0.5);
   padding: 6px 10px;
-  background: transparent;
-  cursor: pointer;
+  background: rgba(20, 25, 45, 0.8);
 }
 
-.navbar-toggler:focus {
+.navbar .navbar-toggler:focus {
   outline: none;
-  box-shadow: none;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.4);
+}
+
+.navbar .navbar-toggler-icon {
+  filter: invert(1);
 }
 
 
 /* =========================
-   TABLET
+   TABLETS
 ========================= */
 
-@media (max-width: 991px) {
-
+@media (max-width: 991.98px) {
   .navbar {
     padding: 10px 20px;
+    flex-wrap: wrap;
+  }
+
+  .logo-cet30 {
+    left: auto;
+    right: 20px;
+    top: 10px;
+    transform: none;
   }
 
   .logo-cet30 img {
@@ -109,21 +190,30 @@
     height: 60px;
   }
 
-  .navbar-nav {
-    gap: 5px;
+  .navbar-collapse {
+    flex-basis: 100%;
+    order: 3;
+    margin-top: 12px;
   }
 
+  .navbar-nav {
+    align-items: flex-start;
+    gap: 4px;
+  }
 }
 
 
 /* =========================
-   CELULAR
+   CELULARES
 ========================= */
 
 @media (max-width: 600px) {
-
   .navbar {
     padding: 8px 15px;
+  }
+
+  .logo-cet30 {
+    right: 15px;
   }
 
   .logo-cet30 img {
@@ -131,4 +221,7 @@
     height: 55px;
   }
 
+  .navbar .nav-link {
+    font-size: 15px;
+  }
 }

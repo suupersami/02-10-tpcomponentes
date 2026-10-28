@@ -1,3 +1,6 @@
+/* =========================
+   FONDO PRINCIPAL
+========================= */
 
 .contenido {
   width: 100%;
@@ -7,90 +10,239 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 50px;
 
-  padding: 30px;
+  padding: 60px 7%;
 
-  background: linear-gradient(
-    135deg,
-    #e8e8e8,
-    #ffffff,
-    #dcdcdc
-  );
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(0, 85, 255, 0.16), transparent 40%),
+    radial-gradient(ellipse at 80% 20%, rgba(0, 119, 255, 0.12), transparent 35%),
+    radial-gradient(circle at 50% 50%, #07152e, #020711 75%);
 
+  color: white;
   font-family: Arial, sans-serif;
   text-align: center;
+
+  position: relative;
+  overflow: hidden;
 }
 
-.error-container {
+/* ESTRELLAS DECORATIVAS */
+
+.contenido::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+
+  background-image:
+    radial-gradient(2px 2px at 20px 30px, #ffffff 50%, transparent 100%),
+    radial-gradient(1px 1px at 100px 150px, #6bbcff 50%, transparent 100%),
+    radial-gradient(2px 2px at 200px 80px, #ffffff 50%, transparent 100%),
+    radial-gradient(1px 1px at 300px 220px, #168bff 50%, transparent 100%);
+
+  background-size: 350px 280px;
+  opacity: 0.55;
+}
+
+/* =========================
+   ASTRONAUTA
+========================= */
+
+.astronauta {
+  flex: 0 1 42%;
+  max-width: 430px;
+  position: relative;
+  z-index: 1;
+
+  animation: flotar 4s ease-in-out infinite;
+}
+
+.astronauta img {
+  display: block;
   width: 100%;
-  max-width: 1000px;
+  height: auto;
+  object-fit: contain;
+
+  filter: drop-shadow(0 0 20px rgba(0, 123, 255, 0.35));
+}
+
+/* ANIMACIÓN DE FLOTACIÓN */
+
+@keyframes flotar {
+  0%, 100% {
+    transform: translateY(0) rotate(-3deg);
+  }
+
+  50% {
+    transform: translateY(-18px) rotate(3deg);
+  }
+}
+
+/* =========================
+   TEXTO DEL ERROR
+========================= */
+
+.error-container {
+  flex: 1;
+  max-width: 650px;
+  position: relative;
+  z-index: 1;
 }
 
 .error-container h1 {
-  color: red;
-  font-size: clamp(60px, 15vw, 160px);
-  font-weight: 400;
+  color: #ff0000;
+  font-size: clamp(75px, 10vw, 150px);
+  font-weight: 900;
+  letter-spacing: 4px;
 
-  margin: 0 0 20px;
+  margin: 0 0 10px;
+
+  text-shadow:
+    0 0 10px rgba(212, 1, 1, 0.8),
+    0 0 30px rgba(211, 3, 3, 0.5);
 }
 
 .titulo {
-  font-size: clamp(28px, 5vw, 48px);
+  font-size: clamp(28px, 4vw, 48px);
   font-weight: bold;
+  color: #ffffff;
 
-  color: black;
-  margin: 15px 0;
+  margin: 10px 0 20px;
 }
 
 .descripcion {
-  font-size: clamp(18px, 3vw, 25px);
-  font-weight: bold;
-
-  color: #333;
-  line-height: 1.6;
+  font-size: clamp(17px, 2vw, 22px);
+  font-weight: normal;
+  color: #c7d5ed;
+  line-height: 1.7;
 
   margin: 20px 0;
 }
 
+/* =========================
+   BOTÓN VOLVER
+========================= */
+
 .hero-button {
-  margin-top: 30px;
-  padding: 15px 30px;
+  margin-top: 25px;
+  padding: 15px 32px;
 
-  border: 1px solid rgba(0, 0, 0, 0.5);
-  border-radius: 30px;
+  border: 2px solid #168bff;
+  border-radius: 40px;
 
-  background: rgba(255, 255, 255, 0.08);
-  color: rgb(0, 0, 0);
+  background: linear-gradient(135deg, #087bff, #0050d8);
+  color: white;
 
   font-size: 18px;
   font-weight: bold;
 
   cursor: pointer;
-  backdrop-filter: blur(10px);
+  box-shadow: 0 0 18px rgba(0, 123, 255, 0.45);
 
-  transition: all 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    background 0.3s ease;
+}
+
+.hero-button span {
+  display: inline-block;
+  margin-right: 8px;
+  transition: transform 0.3s ease;
 }
 
 .hero-button:hover {
-  background: rgba(98, 74, 193, 0.795);
-  color: black;
-  transform: translateY(-3px);
+  background: linear-gradient(135deg, #168bff, #003eb8);
+  transform: translateY(-4px);
+  box-shadow: 0 0 30px rgba(0, 123, 255, 0.8);
 }
 
-@media (max-width: 600px) {
+.hero-button:hover span {
+  transform: translateX(-4px);
+}
+
+/* =========================
+   TABLETS
+========================= */
+
+@media (max-width: 900px) {
   .contenido {
-    padding: 20px;
+    gap: 25px;
+    padding: 50px 4%;
+  }
+
+  .astronauta {
+    flex-basis: 38%;
   }
 
   .error-container h1 {
-    font-size: 75px;
+    font-size: clamp(65px, 10vw, 100px);
   }
 
   .titulo {
-    font-size: 28px;
+    font-size: clamp(25px, 3.5vw, 36px);
+  }
+}
+
+/* =========================
+   CELULARES
+========================= */
+
+@media (max-width: 600px) {
+  .contenido {
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+
+    padding: 35px 22px;
+    min-height: 100vh;
+  }
+
+  .astronauta {
+    flex: none;
+    width: 55%;
+    max-width: 230px;
+    margin-bottom: 10px;
+  }
+
+  .error-container {
+    flex: none;
+    width: 100%;
+  }
+
+  .error-container h1 {
+    font-size: clamp(65px, 18vw, 95px);
+    letter-spacing: 2px;
+    margin-bottom: 5px;
+  }
+
+  .titulo {
+    font-size: 27px;
+    margin: 10px 0 15px;
   }
 
   .descripcion {
-    font-size: 17px;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  .hero-button {
+    margin-top: 18px;
+    padding: 13px 28px;
+    font-size: 16px;
+  }
+}
+
+/* REDUCIR MOVIMIENTO SI EL USUARIO LO PREFIERE */
+
+@media (prefers-reduced-motion: reduce) {
+  .astronauta {
+    animation: none;
+  }
+
+  .hero-button,
+  .hero-button span {
+    transition: none;
   }
 }

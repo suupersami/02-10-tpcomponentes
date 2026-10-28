@@ -50,7 +50,7 @@ export class Productos {
     {
       titulo: '55 Cancri e',
       imagen: '/55cancri.webp',
-      descripcion: 'Es una supertierra rocosa situada a 41 años luz de nosotros que destaca por sus condiciones extremas: un año solo 18 horas debido a su cercanía a su estrella, lo que eleva su temperatura a más de 2,000 °C, creando un mundo cubierto por un océano de lava. Investigaciones científicas sugieren que este exoplaneta es rico en carbono, lo que bajo su inmensa presión podría hacer que una parte significativa de su interior esté compuesta de diamante.',
+      descripcion: 'Es una supertierra rocosa situada a 41 años luz de nosotros que destaca por sus condiciones extremas: un año son solo 18 horas debido a su cercanía a su estrella, lo que eleva su temperatura a más de 2,000 °C, creando un mundo cubierto por un océano de lava. Investigaciones científicas sugieren que este exoplaneta es rico en carbono, lo que bajo su inmensa presión podría hacer que una parte significativa de su interior esté compuesta de diamante.',
       likes: 0,
       dislikes: 0
     },
